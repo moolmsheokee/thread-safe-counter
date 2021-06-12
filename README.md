@@ -12,6 +12,7 @@
 ---
 ## **MY ANALYSIS**
 When Multiple users(threads or processes) use the same resource, it should be used in isolation(mutual exclusion). Like a counter, critical section should be used in isolation. We can protect critical section with 'mutex' and 'semaphore'. In Mutex, only one thread holding the lock enters. It means that mutex can be unlocked by who locked it. Otherwise, semaphore makes multiple threads can enter with a counter and ther is no lock owner concept. So it can be used for other sychronization purpose.
+
 Anyway, mutex is enormously faster than semaphore when I executed two c files.
 
 Then why it might happened?
