@@ -30,7 +30,7 @@ void init(semcounter_t *c) {
     c->value = 0;
     key_t key;
     key = ftok(PATH, 'z');
-    int semid = segment(c->key, 1, 0600 | IPC_CREAT);
+    int semid = semget(c->key, 1, 0600 | IPC_CREAT);
 }
 
 void increment(semcounter_t *c) {
@@ -51,7 +51,7 @@ void increment(semcounter_t *c) {
     semop(semid, &s, 1);
 }
 
-void decrement(counter_t *c) {
+void decrement(semcounter_t *c) {
     
     int semid;
     struct sembuf s;
@@ -69,7 +69,7 @@ void decrement(counter_t *c) {
     semop(semid, &s, 1);
 }
 
-int get(counter_t *c) {
+int get(semcounter_t *c) {
     
     int semid;
     struct sembuf s;
